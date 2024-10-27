@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.finalprotest.user.mapper.UserMapper">
+
+    <select id="isDuplicatedEmail" resultType="int">
+        SELECT COUNT(userEmail)
+        FROM USERS
+        WHERE userEmail = #{userEmail}
+    </select>
+
+    <insert id="register" parameterType="com.example.finalprotest.user.Entity.User">
+        INSERT INTO USERS (
+                           userEmail, userPassword, userName, userPhone, userAddr, userGender
+        ) VALUES (
+                  #{userEmail},
+                  #{userPassword},
+                  #{userName},
+                  #{userPhone},
+                  #{userAddr},
+                  #{userGender}
+                         )
+    </insert>
+
+
+</mapper>
